@@ -16,7 +16,9 @@ int main()
 
     InsertAfter(12,5);
     InsertAfter(35,9);
+    InsertAfter(1,20);
 
+    printf("%d\n",tail->Data);
 
     int x = GetCount();
     printf ("%d\t",x);

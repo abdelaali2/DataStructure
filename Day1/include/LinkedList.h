@@ -115,12 +115,19 @@ void InsertAfter(int data, int afterData)
     {
         if(afterData == current->Data)
         {
-            Node *newNode = malloc(sizeof(Node));
-            newNode->Prev = current;
-            newNode->Data = data;
-            newNode->Next = current->Next;
-            current->Next->Prev=newNode;
-            current->Next=newNode;
+            if (NULL == current->Next)
+            {
+                Add(data);
+            }
+            else
+            {
+                Node *newNode = malloc(sizeof(Node));
+                newNode->Prev = current;
+                newNode->Data = data;
+                newNode->Next = current->Next;
+                current->Next->Prev=newNode;
+                current->Next=newNode;
+            }
             return;
         }
 
