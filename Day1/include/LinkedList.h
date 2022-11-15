@@ -117,11 +117,8 @@ void InsertAfter(int data, int afterData)
         {
             Node *newNode = malloc(sizeof(Node));
             newNode->Prev = current;
-            printf("%d\n",newNode->Prev->Data);
             newNode->Data = data;
-            printf("%d\n",newNode->Data);
             newNode->Next = current->Next;
-            printf("%d\n",newNode->Next->Data);
             current->Next->Prev=newNode;
             current->Next=newNode;
             return;
@@ -144,5 +141,19 @@ int GetCount()
     return num;
 }
 
-int GetDataByIndex(int index);
+int GetDataByIndex(int index)
+{
+    Node *current = head;
+    int i=0;
+    while(current != NULL && i<index)
+    {
+        if (i==index-1)//since the loop will end at i=index we need to take the last value
+        {
+            return current->Data;
+        }
+        i++;
+        current=current->Next;
+    }
+    return NULL;
+}
 #endif // LINKEDLIST_H

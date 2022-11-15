@@ -12,15 +12,21 @@ int main()
     Add(5);
     Add(7);
     Add(9);
+    Add(20);
 
     InsertAfter(12,5);
+    InsertAfter(35,9);
 
-    //Node *found = GetNodeByData(12);
 
-    //printf ("%d",found->Data);
     int x = GetCount();
     printf ("%d\t",x);
     Display();
+    int in;
+    printf("\nEnter the index: ");
+    scanf("%d",&in);
+    int y = GetDataByIndex(in);
+    printf ("\n%d\t",y);
+
 
     return 0;
 }
