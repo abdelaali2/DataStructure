@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1668799491 source:m:\private iti\labs\datastructure\lab 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"headlib.h"
+
+1668799167 source:m:\private iti\labs\datastructure\lab 2\stack.c
+	"headlib.h"
+
+1668799778 m:\private iti\labs\datastructure\lab 2\headlib.h
+	<stdio.h>
+	<stdlib.h>
+
