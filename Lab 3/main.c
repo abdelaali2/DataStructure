@@ -1,29 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "head.h"
 
-void Swap(int *first, int *second)
+void Swap(Node *first, Node *second)
 {
-    int temp = *first;
-    *first = *second;
-    *second = temp;
+    printf("swap is here, %d, %d\n",first->X,second->X);
+
+    int temp = first->X;
+    first->X = second->X;
+    second->X = temp;
 }
 
-void BubbleSort(int *data, int size)
+void BubbleSort(Node *Ptrdata, int size)
 {
     int counter, index;
     int sorted = 0;
+
+    if (head == NULL)
+    {
+        return;
+    }
 
     for(counter = 0; counter < size - 1 && !sorted; counter++)
     {
         sorted = 1;
 
-        for(index = 0; index < size - 1 - counter; index++)
+        for(index = 0; index < size - 1 - counter && NULL != Ptrdata->Next; index++)
         {
-            if(data[index] > data[index + 1])
+            printf("round %d\n",index);
+            if(Ptrdata->X > Ptrdata->Next->X)
             {
-                Swap(&data[index], &data[index + 1]);
+                Swap(Ptrdata, Ptrdata->Next);
                 sorted = 0;
             }
+            Ptrdata = Ptrdata->Next;
         }
     }
 }
@@ -84,23 +92,54 @@ int BinarySearch(int item, int *data, int size)
     return -1;
 }
 
-void Display(int *data, int size)
-{
-    int index;
-
-    for(index = 0; index < size; index++)
-    {
-        printf("%d  ", data[index]);
-    }
-}
 
 int main()
 {
+    int len=0;
     int arr[] = {4, 3, 5, 6, 2, 1};
+    for (len=0;arr[len]!=NULL;len++){}
+    int i;
+    for (i=0;i<len;i++)
+    {
+        Add (arr[i]);
+    }
 
-    SelectionSort(arr, 6);
+    BubbleSort(head, 6);
 
-    Display(arr, 6);
+    Display(6);
 
     return 0;
+}
+
+void Display(int size)
+{
+    int i=0;
+    Node *current = head;
+
+    while(current != NULL && size > i)
+    {
+        printf("%d   ", current->X);
+        current = current->Next;
+        i++;
+    }
+}
+
+
+void Add(int data)
+{
+    Node *newNode = malloc(sizeof(Node));
+    newNode->X = data;
+    newNode->Prev = newNode->Next = NULL;
+
+    if(head == NULL)
+    {
+        head = tail = newNode;
+    }
+    else
+    {
+        tail->Next = newNode;
+        newNode->Prev = tail;
+        tail = newNode;
+        tail->Next = NULL;
+    }
 }

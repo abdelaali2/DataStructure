@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1669384538 source:m:\private iti\labs\datastructure\lab 3\function.c
+
+1669403247 source:m:\private iti\labs\datastructure\lab 3\main.c
+	"head.h"
+
+1669402901 m:\private iti\labs\datastructure\lab 3\head.h
+	<stdio.h>
+	<stdlib.h>
+
