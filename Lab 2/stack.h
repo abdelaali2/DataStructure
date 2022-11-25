@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef ME
+#define  ME
 typedef struct Stack Stack;
 struct Stack
 {
@@ -30,3 +32,35 @@ void push(int data)
 
 }
 
+void Display()
+{
+    Stack *current = top;
+
+    while(current != NULL)
+    {
+        printf("%d   ", current->Data);
+        current = current->prev;
+        printf("\n \n");
+
+    }
+}
+void Pop()
+{
+
+    if(top == NULL)
+
+        return;
+
+    else
+    {
+        Stack *node=top;
+
+        top=top->prev;
+
+
+        free(node);
+
+    }
+
+}
+#endif

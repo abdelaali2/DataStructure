@@ -1,46 +1,27 @@
 #include "stack.h"
+#include "queue.h"
 
-void Display()
-{
-    Stack *current = top;
-
-    while(current != NULL)
-    {
-        printf("%d   ", current->Data);
-        current = current->prev;
-        printf("\n \n");
-
-    }
-}
-void Pop()
-{
-
-    if(top == NULL)
-
-        return;
-
-    else
-    {
-        Stack *node=top;
-
-        top=top->prev;
-
-
-        free(node);
-
-    }
-
-}
 
 int main()
 {
-    int data;
-    push(1);
+
+    /*push(1);
     push(2);
     push(3);
     push(4);
     Display();
     Pop();
-    Display();
+    Display();*/
+
+    enqueue(1);
+	enqueue(2);
+	enqueue(3);
+	enqueue(4);
+	enqueue(5);
+	display_queue();
+	dequeue();
+	display_queue();
+
+
     return 0;
 }
