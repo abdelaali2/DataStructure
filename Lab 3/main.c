@@ -72,24 +72,58 @@ void InsertionSort(int *data, int size)
     }
 }
 
-int BinarySearch(int item, int *data, int size)
+Node *middle (Node *start, Node *finish)
 {
-    int minIndex = 0, maxIndex = size - 1, midIndex;
+    Node *slow = start;
+    Node *fast = start->Next;
 
-    while(minIndex <= maxIndex)
+    if (NULL == start)
+        return NULL;
+
+    while (finish != fast)
     {
-        midIndex = (minIndex + maxIndex) / 2;
-
-        if(item == data[midIndex])
-            return midIndex;
-
-        if(item > data[midIndex])
-            minIndex = midIndex + 1;
-        else
-            maxIndex = midIndex - 1;
+        fast = fast->Next;
+        if (finish != fast)
+        {
+            slow = slow->Next;
+            fast = fast->Next;
+        }
     }
+    return slow;
 
-    return -1;
+}
+
+
+Node* BinarySearch(int item, Node *Ptrdata)
+{
+    Node* minIndex = head;
+    Node* maxIndex = tail;
+    Node* midIndex;
+
+    do
+    {
+        midIndex = middle(minIndex,maxIndex);
+
+        if (NULL == middle)
+        {
+            return NULL;
+        }
+
+        if(item == Ptrdata->X)
+        {
+            return midIndex;
+        }
+
+        if(item > Ptrdata->X)
+        {
+            minIndex = midIndex->Next;
+        }
+        else
+            maxIndex = midIndex;
+
+    }while(minIndex != maxIndex || NULL == minIndex);
+
+    return NULL;
 }
 
 
@@ -97,9 +131,9 @@ int main()
 {
     int len=0;
     int arr[] = {4, 3, 5, 6, 2, 1};
-    for (len=0;arr[len]!=NULL;len++){}
+    for (len=0; arr[len]!=NULL; len++) {}
     int i;
-    for (i=0;i<len;i++)
+    for (i=0; i<len; i++)
     {
         Add (arr[i]);
     }
@@ -107,6 +141,10 @@ int main()
     BubbleSort(head, 6);
 
     Display(6);
+
+    Node* found = BinarySearch(5,head);
+    printf("We found the value %d in your list",found->X);
+
 
     return 0;
 }

@@ -18,13 +18,15 @@ void Add(int data);
 
 void Swap(Node *first, Node *second);
 
+Node *middle (Node *start, Node *finish);
+
 void BubbleSort(Node *data, int size);
 
 void SelectionSort(int *data, int size);
 
 void InsertionSort(int *data, int size);
 
-int BinarySearch(int item, int *data, int size);
+Node* BinarySearch(int item, Node *Ptrdata);
 
 void Display(int size);
 
